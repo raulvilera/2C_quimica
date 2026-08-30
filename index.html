@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E.E. Profª Wanda Mascagni de Sá – Química 2ª Série C</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #eef4fb 0%, #dbe9f7 100%);
+            padding: 30px 20px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px rgba(0, 10, 30, 0.15);
+            padding: 30px 35px;
+        }
+
+        .school-header {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #0b2b4b;
+            letter-spacing: -0.5px;
+            border-left: 12px solid #1565c0;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .student-info-panel {
+            background: #e3f0fc;
+            border-radius: 28px;
+            padding: 22px 25px;
+            margin-bottom: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px 20px;
+            align-items: center;
+            border: 1px solid #90caf9;
+        }
+
+        .info-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            padding: 8px 18px;
+            border-radius: 40px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            flex: 1 1 auto;
+            min-width: 230px;
+        }
+
+        .info-group label {
+            font-weight: 600;
+            color: #0d47a1;
+            white-space: nowrap;
+        }
+
+        select,
+        input[type="text"] {
+            border: none;
+            background: transparent;
+            font-size: 1rem;
+            padding: 6px 0;
+            outline: none;
+            border-bottom: 2px dotted #64b5f6;
+            font-weight: 500;
+            color: #0b2b4b;
+            width: 100%;
+            min-width: 160px;
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        select:disabled {
+            cursor: not-allowed;
+            opacity: 0.55;
+        }
+
+        input[readonly] {
+            background-color: transparent;
+            cursor: default;
+        }
+
+        .hint-turma-primeiro {
+            width: 100%;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #0d47a1;
+            background: #eaf3fd;
+            border: 1px dashed #1565c0;
+            border-radius: 20px;
+            padding: 8px 16px;
+        }
+
+        .title-activity {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #0d47a1;
+            margin: 20px 0 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(145deg, #e3f0fc, #ffffff);
+            padding: 15px;
+            border-radius: 60px;
+            border: 2px solid #1565c0;
+        }
+
+        .sub {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #1565c0;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        /* ---------- CARD DA QUESTÃO EM DEGRADÊ AZUL CLARO / VERMELHO ---------- */
+        .question-block {
+            background: linear-gradient(150deg, #90caf9 0%, #ef9a9a 55%, #e53935 100%);
+            border-radius: 30px;
+            padding: 25px 25px 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 22px rgba(60, 10, 10, 0.3);
+            border: 1px solid #c62828;
+        }
+
+        .question-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .question-icon {
+            font-size: 1.6rem;
+            background: rgba(255, 255, 255, 0.92);
+            width: 55px;
+            min-width: 55px;
+            height: 55px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #b71c1c;
+            font-weight: 800;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+        }
+
+        .question-text-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .question-context {
+            font-size: 1rem;
+            color: #fdf3f2;
+            line-height: 1.5;
+        }
+
+        .question-text {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+        }
+
+        .habilidade-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #b71c1c;
+            background: #ffffff;
+            padding: 3px 12px;
+            border-radius: 20px;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .tipo-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #ffffff;
+            background: #0d47a1;
+            padding: 2px 8px;
+            border-radius: 15px;
+            margin-left: 8px;
+            letter-spacing: 0.3px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .tipo-tag.dissertativa {
+            background: #6a1b9a;
+        }
+
+        .options {
+            padding-left: 70px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 12px;
+        }
+
+        /* ---------- ALTERNATIVAS COM EFEITO DE ALTO RELEVO ---------- */
+        .option-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: #f4f9ff;
+            padding: 12px 20px;
+            border-radius: 18px;
+            border: none;
+            cursor: pointer;
+            box-shadow:
+                6px 6px 12px rgba(4, 20, 45, 0.35),
+                -5px -5px 12px rgba(255, 255, 255, 0.65);
+            transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.08s ease;
+        }
+
+        .option-item:hover {
+            transform: translateY(-1px);
+        }
+
+        .option-item.selected {
+            background: #1b5e20;
+            transform: translateY(2px);
+            box-shadow:
+                inset 4px 4px 8px rgba(0, 0, 0, 0.45),
+                inset -3px -3px 6px rgba(255, 255, 255, 0.08);
+        }
+
+        .option-item.selected .option-text {
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .option-item input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #1b5e20;
+        }
+
+        .option-text {
+            font-size: 1.05rem;
+            color: #0b2b4b;
+        }
+
+        .discursive-box {
+            padding-left: 70px;
+            margin-top: 12px;
+        }
+
+        textarea {
+            width: 100%;
+            border: none;
+            border-radius: 20px;
+            padding: 15px 20px;
+            font-size: 1rem;
+            resize: vertical;
+            background: #f4f9ff;
+            font-family: Arial, sans-serif;
+            box-shadow:
+                6px 6px 12px rgba(4, 20, 45, 0.35),
+                -5px -5px 12px rgba(255, 255, 255, 0.65);
+        }
+
+        textarea:focus {
+            outline: none;
+            background: #eaf3ff;
+        }
+
+        .img-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 20px;
+            padding: 15px;
+            margin: 10px 0 15px 70px;
+            color: #0d47a1;
+            font-weight: 500;
+            gap: 12px;
+            border: none;
+            text-align: center;
+            flex-direction: column;
+            box-shadow: 0 5px 14px rgba(0, 0, 0, 0.25);
+        }
+
+        .img-placeholder img.zoomable {
+            cursor: zoom-in;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .img-placeholder img.zoomable:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+        }
+
+        .img-credit {
+            font-size: 0.7rem;
+            color: #5c7a9c;
+            opacity: 0.85;
+        }
+
+        .zoom-hint {
+            font-size: 0.8rem;
+            color: #0d47a1;
+            opacity: 0.75;
+            margin-top: -6px;
+        }
+
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            cursor: zoom-out;
+            padding: 30px;
+            animation: fadeInOverlay 0.15s ease;
+        }
+
+        @keyframes fadeInOverlay {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .lightbox-overlay img {
+            max-width: 92vw;
+            max-height: 90vh;
+            border-radius: 14px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+            animation: zoomInImg 0.18s ease;
+            cursor: default;
+            background: #fff;
+        }
+
+        @keyframes zoomInImg {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .lightbox-close {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            font-size: 2.2rem;
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.15);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10000;
+            transition: background 0.15s;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .submit-area {
+            text-align: center;
+            margin: 40px 0 10px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            border: none;
+            font-size: 1.3rem;
+            font-weight: 700;
+            padding: 12px 25px;
+            border-radius: 40px;
+            cursor: pointer;
+            box-shadow: 0 5px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.07s;
+            border: 2px solid #1565c0;
+            color: white;
+        }
+
+        .btn-submit {
+            background: #0d47a1;
+        }
+
+        .btn-submit:active {
+            transform: translateY(4px);
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .btn-delete {
+            background: #d32f2f;
+            border-color: #d32f2f;
+            box-shadow: 0 5px 0 rgba(211, 47, 47, 0.3);
+        }
+
+        .btn-delete:active {
+            transform: translateY(4px);
+            box-shadow: 0 1px 0 rgba(211, 47, 47, 0.3);
+        }
+
+        .btn-print {
+            background: #1b5e20;
+            border-color: #1b5e20;
+            box-shadow: 0 5px 0 rgba(27, 94, 32, 0.3);
+        }
+
+        .btn-print:active {
+            transform: translateY(4px);
+            box-shadow: 0 1px 0 rgba(27, 94, 32, 0.3);
+        }
+
+        .footer-note {
+            margin-top: 25px;
+            color: #3d5a78;
+            text-align: right;
+            font-size: 0.9rem;
+            border-top: 1px dashed #90caf9;
+            padding-top: 15px;
+        }
+
+        .error-message {
+            background: #ffebee;
+            border: 1px solid #ef5350;
+            color: #c62828;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .success-message {
+            background: #e3f0fc;
+            border: 1px solid #1976d2;
+            color: #0d47a1;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+            }
+            .submit-area {
+                display: none;
+            }
+            .lightbox-overlay,
+            .lightbox-close {
+                display: none !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .student-info-panel {
+                flex-direction: column;
+            }
+            .info-group {
+                width: 100%;
+            }
+            .options,
+            .discursive-box,
+            .img-placeholder {
+                padding-left: 0;
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="app">
+        <div class="school-header">E.E. PROFª WANDA MASCAGNI DE SÁ</div>
+
+        <div class="student-info-panel">
+            <div class="info-group">
+                <label><i class="fas fa-chalkboard"></i> Turma:</label>
+                <select v-model="turmaSelecionada" @change="onTurmaChange">
+                    <option :value="null">-- Selecione a turma --</option>
+                    <option v-for="t in turmas" :key="t.id" :value="t">{{ t.nome }}</option>
+                </select>
+            </div>
+            <div class="info-group">
+                <label><i class="fas fa-user-graduate"></i> Nome:</label>
+                <select v-model="alunoSelecionado" @change="preencherDados" :disabled="!turmaSelecionada">
+                    <option :value="null">{{ turmaSelecionada ? '-- Selecione seu nome --' : 'Selecione a turma primeiro' }}</option>
+                    <option v-for="a in alunosDaTurma" :key="a.num" :value="a">{{ a.nome }}</option>
+                </select>
+            </div>
+            <div class="info-group">
+                <label><i class="fas fa-hashtag"></i> Nº:</label>
+                <input type="text" v-model="numeroAluno" readonly placeholder="automático">
+            </div>
+            <div class="info-group">
+                <label><i class="fas fa-id-card"></i> RA:</label>
+                <input type="text" v-model="raAluno" readonly placeholder="automático">
+            </div>
+            <div class="info-group">
+                <label><i class="fas fa-envelope"></i> E-mail institucional:</label>
+                <input type="text" v-model="emailAluno" readonly placeholder="automático">
+            </div>
+            <div class="info-group">
+                <label><i class="fas fa-calendar-day"></i> Data:</label>
+                <input type="text" v-model="dataAtividade" readonly>
+            </div>
+            <div class="hint-turma-primeiro" v-if="!turmaSelecionada">
+                Selecione primeiro a turma e, em seguida, o seu nome na lista.
+            </div>
+        </div>
+
+        <div class="error-message" :class="{ show: mostrarErro }">
+            <strong>❌ Erro:</strong> {{ mensagemErro }}
+        </div>
+
+        <div class="success-message" :class="{ show: mostrarSucesso }">
+            <strong>✅ Sucesso:</strong> {{ mensagemSucesso }}
+        </div>
+
+        <div class="title-activity">ATIVIDADE DE QUÍMICA <span style="font-size: 1.3rem; background: #e3f0fc; color:#0d47a1; padding: 0 10px; border-radius: 30px;">3º BIMESTRE</span></div>
+        <div class="sub">⚗️ Cinética Química: Condições de Ocorrência das Reações, Energia de Ativação e Fatores que Afetam a Rapidez</div>
+
+        <!-- QUESTÕES -->
+        <div v-for="(q, idx) in questoes" :key="idx" class="question-block">
+            <div class="question-header">
+                <span class="question-icon">{{ idx+1 }}</span>
+                <div class="question-text-wrap">
+                    <div>
+                        <span class="habilidade-tag">{{ q.tema }}</span>
+                        <span class="tipo-tag" :class="{ dissertativa: q.tipo === 'dis' }">
+                            {{ q.tipo === 'obj' ? 'MÚLTIPLA ESCOLHA' : 'DISSERTATIVA' }}
+                        </span>
+                    </div>
+                    <span class="question-context" v-if="q.contexto">{{ q.contexto }}</span>
+                    <span class="question-text">{{ q.pergunta }}</span>
+                </div>
+            </div>
+
+            <div class="img-placeholder" v-if="q.imagem">
+                <img :src="q.imagem" :alt="'Ilustração da questão ' + (idx+1)" class="zoomable"
+                    style="max-width: 100%; max-height: 380px; border-radius: 10px; display: block; margin: 0 auto;"
+                    @click="abrirZoom(q.imagem)">
+                <span class="zoom-hint"><i class="fas fa-magnifying-glass-plus"></i> Clique na imagem para ampliar</span>
+                <span class="img-credit" v-if="q.credito">{{ q.credito }}</span>
+            </div>
+
+            <div v-if="q.tipo === 'obj'" class="options">
+                <label v-for="(alt, i) in q.alternativas" :key="i" class="option-item"
+                    :class="{ selected: respostas[idx].escolha === i }">
+                    <input type="radio" :name="'q'+idx" :value="i" v-model.number="respostas[idx].escolha">
+                    <span class="option-text">{{ alt }}</span>
+                </label>
+            </div>
+
+            <div v-else class="discursive-box">
+                <textarea rows="5" v-model="respostas[idx].texto"
+                    placeholder="Digite sua resposta aqui..."></textarea>
+            </div>
+        </div>
+
+        <div class="submit-area">
+            <button class="btn btn-submit" @click="enviarRespostas" :disabled="enviando">
+                <i class="fas" :class="enviando ? 'fa-spinner fa-spin' : 'fa-cloud-upload-alt'"></i>
+                {{ enviando ? 'ENVIANDO...' : 'ENVIAR RESPOSTAS' }}
+            </button>
+            <button class="btn btn-delete" @click="excluirRespostas" :disabled="enviando">
+                <i class="fas fa-trash-alt"></i> LIMPAR
+            </button>
+            <button class="btn btn-print" onclick="window.print()">
+                <i class="fas fa-print"></i> IMPRIMIR
+            </button>
+        </div>
+        <div class="footer-note">
+            <i class="fas fa-database"></i> Respostas serão armazenadas na planilha "Química 2ª Série C – 3º Bimestre" do Google Sheets
+        </div>
+
+        <!-- LIGHTBOX / ZOOM DE IMAGEM -->
+        <div class="lightbox-overlay" v-if="imagemZoom" @click="fecharZoom">
+            <div class="lightbox-close" @click.stop="fecharZoom"><i class="fas fa-xmark"></i></div>
+            <img :src="imagemZoom" @click.stop alt="Imagem ampliada">
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        (function () {
+            // ---------- DADOS DAS TURMAS E ALUNOS ----------
+            // Para adicionar outra turma, basta duplicar o objeto abaixo com um novo "id",
+            // "nome" e a lista de "alunos" (num, nome, ra, email).
+            const turmas = [
+                {
+                    id: '2C',
+                    nome: '2ª Série C',
+                    alunos: [
+                        { num: 1, nome: 'ANA CLARA FERNANDES DA SILVA', ra: '112733688-5', email: '00001127336885SP@al.educacao.sp.gov.br' },
+                        { num: 2, nome: 'BARBARA VITÓRIA SANTOS SOUZA', ra: '112229643-5', email: '00001122296435SP@al.educacao.sp.gov.br' },
+                        { num: 3, nome: 'GABRIEL FREITAS DE BARROS', ra: '112226824-5', email: '00001122268245SP@al.educacao.sp.gov.br' },
+                        { num: 4, nome: 'GUILHERME XAVIER DE MACÊDO', ra: '114147486-4', email: '00001141474864SP@al.educacao.sp.gov.br' },
+                        { num: 5, nome: 'JAQUELINE LEMOS CUNHA DE AMORIM', ra: '115107760-4', email: '00001151077604SP@al.educacao.sp.gov.br' },
+                        { num: 6, nome: 'JEFFERSON DAVID BARBOZA ELIAS', ra: '113205245-2', email: '00001132052452SP@al.educacao.sp.gov.br' },
+                        { num: 7, nome: 'KAIQUE SORACE MOTA SILVA', ra: '113153420-7', email: '00001131534207SP@al.educacao.sp.gov.br' },
+                        { num: 8, nome: 'LUANA DA SILVA ROCHA DOS SANTOS', ra: '113211690-9', email: '00001132116909SP@al.educacao.sp.gov.br' },
+                        { num: 9, nome: 'LUIZA AVELA ORTEGA', ra: '112228678-8', email: '00001122286788SP@al.educacao.sp.gov.br' },
+                        { num: 10, nome: 'MIRELA DE OLIVEIRA MARTINS', ra: '112221629-4', email: '00001122216294SP@al.educacao.sp.gov.br' },
+                        { num: 11, nome: 'ALICIA KEMILLY SULINO REIS', ra: '110496463-6', email: '00001104964636SP@al.educacao.sp.gov.br' },
+                        { num: 12, nome: 'MARIAH EDUARDA PEDROSO MARTINS', ra: '112216902-4', email: '00001122169024SP@al.educacao.sp.gov.br' },
+                        { num: 13, nome: 'HELIO HENRIQUE LAMBERT VIEIRA', ra: '114162451-5', email: '00001141624515SP@al.educacao.sp.gov.br' },
+                        { num: 14, nome: 'PEDRO HENRIQUE VITORINO TOMAZ DOS SANTOS', ra: '113206613-X', email: '0000113206613XSP@al.educacao.sp.gov.br' },
+                        { num: 15, nome: 'MARCOS VINICIUS DE SOUZA ALVES', ra: '114239845-6', email: '00001142398456SP@al.educacao.sp.gov.br' },
+                        { num: 16, nome: 'GUILHERME FAGUNDES DE ARAUJO', ra: '111895869-X', email: '0000111895869XSP@al.educacao.sp.gov.br' },
+                        { num: 17, nome: 'LARA BARROS DA SILVA', ra: '111931694-7', email: '00001119316947SP@al.educacao.sp.gov.br' },
+                        { num: 19, nome: 'MATHEUS FELIPE SILVA SOUZA', ra: '111717661-7', email: '00001117176617SP@al.educacao.sp.gov.br' },
+                        { num: 20, nome: 'PEDRO HENRIQUE CORDEIRO MACEDO', ra: '116598301-1', email: '00001165983011SP@al.educacao.sp.gov.br' },
+                        { num: 22, nome: 'ANA BEATRIZ OLIVEIRA ALVES', ra: '115107050-6', email: '00001151070506SP@al.educacao.sp.gov.br' },
+                        { num: 23, nome: 'ARTHUR RIBEIRO SOARES LUZ', ra: '115556623-3', email: '00001155566233SP@al.educacao.sp.gov.br' },
+                        { num: 24, nome: 'SAMUEL RIBEIRO SOARES LUZ', ra: '115556771-7', email: '00001155567717SP@al.educacao.sp.gov.br' },
+                        { num: 25, nome: 'PEDRO HENRIQUE BARRETO REGIS', ra: '112212951-8', email: '00001122129518SP@al.educacao.sp.gov.br' },
+                        { num: 27, nome: 'ANDRÉ RICARDO BUENO EMILIO FILHO', ra: '114145951-6', email: '00001141459516SP@al.educacao.sp.gov.br' },
+                        { num: 28, nome: 'GIOVANNA SOUZA DE ALBUQUERQUE', ra: '115546312-2', email: '00001155463122SP@al.educacao.sp.gov.br' },
+                        { num: 29, nome: 'PABLO VINICIUS SILVA DE LIMA', ra: '113208199-3', email: '00001132081993SP@al.educacao.sp.gov.br' },
+                        { num: 30, nome: 'DESIREE RODRIGUES DE AMORIM', ra: '112117613-6', email: '00001121176136SP@al.educacao.sp.gov.br' },
+                        { num: 31, nome: 'MARIANA LOPES GRAÇA', ra: '112025243-X', email: '0000112025243XSP@al.educacao.sp.gov.br' },
+                        { num: 32, nome: 'VITOR DORICE DOS SANTOS', ra: '114157198-5', email: '00001141571985SP@al.educacao.sp.gov.br' },
+                        { num: 33, nome: 'INARA BEZERRA DA SILVA', ra: '110498121-X', email: '0000110498121XSP@al.educacao.sp.gov.br' },
+                        { num: 34, nome: 'ASHELEY DE PAULA PEREIRA GARCIA', ra: '112216890-1', email: '00001122168901SP@al.educacao.sp.gov.br' },
+                        { num: 36, nome: 'LAIS MIKAELLY ROCHA SILVA', ra: '114156896-2', email: '00001141568962SP@al.educacao.sp.gov.br' },
+                        { num: 37, nome: 'YASMIN VITORIA SIQUEIRA FERNANDES', ra: '112228037-3', email: '00001122280373SP@al.educacao.sp.gov.br' },
+                        { num: 38, nome: 'PEDRO PAULO DE SOUZA NEVES', ra: '111931821-X', email: '0000111931821XSP@al.educacao.sp.gov.br' },
+                        { num: 39, nome: 'ISABELLA DE SOUZA BARROS', ra: '114727075-2', email: '00001147270752SP@al.educacao.sp.gov.br' },
+                        { num: 40, nome: 'MARIA EDUARDA CHAGAS GONÇALVES', ra: '112216421-X', email: '0000112216421XSP@al.educacao.sp.gov.br' },
+                        { num: 41, nome: 'CARLOS EDUARDO DE FREITAS PINHEIRO LOPES', ra: '113358030-0', email: '00001133580300SP@al.educacao.sp.gov.br' },
+                        { num: 42, nome: 'LUCAS PERES DE SOUZA', ra: '111126924-5', email: '00001111269245SP@al.educacao.sp.gov.br' },
+                        { num: 43, nome: 'ERIK TAVARES AUGUSTO', ra: '110062207-X', email: '0000110062207XSP@al.educacao.sp.gov.br' },
+                        { num: 44, nome: 'DAVÍ ALMEIDA LIMA', ra: '113204173-9', email: '00001132041739SP@al.educacao.sp.gov.br' }
+                    ]
+                }
+            ];
+
+            // ---------- QUESTÕES (Aulas 1, 2 e 3 · 3º Bimestre · Guia do Currículo Priorizado · 2ª Série)
+            // Tema: Cinética Química — AE6: Investigar as condições para a ocorrência das transformações
+            // químicas, analisando de forma qualitativa e quantitativa a rapidez das reações, e os fatores
+            // que a afetam (EM13CNT205) ----------
+            const questoes = [
+                // Aula 1 — Condições fundamentais / Teoria das colisões
+                {
+                    tema: 'Condições Fundamentais e Teoria das Colisões · Aula 1',
+                    tipo: 'obj',
+                    contexto: 'Ao misturar gás hidrogênio (H₂) e gás oxigênio (O₂) dentro de um balão, nada acontece à temperatura ambiente. Porém, uma simples faísca é suficiente para provocar uma reação explosiva entre esses gases, formando água. O gráfico ao lado representa a distribuição de energia cinética das partículas de um gás.',
+                    pergunta: 'De acordo com a Teoria das Colisões, para que o choque entre as partículas dos reagentes resulte efetivamente em uma reação química (colisão efetiva), além do contato entre elas, é necessário que:',
+                    imagem: 'https://commons.wikimedia.org/wiki/Special:FilePath/Maxwell-Boltzmann_distribution.svg?width=700',
+                    credito: 'Imagem: Wikimedia Commons (domínio público) — Distribuição de Maxwell-Boltzmann',
+                    alternativas: [
+                        'ocorram apenas em temperaturas superiores a 100 °C, independentemente da energia envolvida',
+                        'as partículas colidam com orientação geométrica adequada e energia igual ou superior à energia de ativação',
+                        'as partículas estejam sempre no estado sólido, pois líquidos e gases não colidem de forma eficaz',
+                        'o número de colisões seja reduzido, diminuindo a chance de formação de produtos'
+                    ],
+                    correta: 1
+                },
+                // Aula 1 — Rapidez das reações químicas (conceito)
+                {
+                    tema: 'Rapidez das Transformações Químicas · Aula 1',
+                    tipo: 'obj',
+                    contexto: 'Um prego de ferro deixado ao ar livre, em ambiente úmido, leva meses para se cobrir totalmente de ferrugem — uma transformação química lenta e praticamente imperceptível de um dia para o outro.',
+                    pergunta: 'A diferença de velocidade entre uma reação explosiva e a lenta formação de ferrugem em um prego está relacionada à grandeza denominada "rapidez da reação", que é definida como:',
+                    imagem: 'https://commons.wikimedia.org/wiki/Special:FilePath/Rusty_nail_through_lemon_superstition.jpg?width=700',
+                    credito: 'Imagem: Wikimedia Commons (CC BY-SA)',
+                    alternativas: [
+                        'a variação da quantidade de reagentes consumidos ou de produtos formados por unidade de tempo',
+                        'o tamanho dos átomos envolvidos, já que reações lentas sempre envolvem átomos maiores',
+                        'o estado físico da água presente no ambiente, único fator que determina a velocidade de qualquer reação',
+                        'a cor das substâncias formadas, que indica sempre reações mais rápidas quando são mais escuras'
+                    ],
+                    correta: 0
+                },
+                // Aula 1 — Dissertativa: colisões efetivas
+                {
+                    tema: 'Teoria das Colisões e Condições para a Ocorrência de Reações · Aula 1',
+                    tipo: 'dis',
+                    contexto: 'Um comprimido efervescente, ao ser colocado em um copo com água, reage liberando um grande número de bolhas de gás carbônico (CO₂), resultado do choque entre as partículas do comprimido e as moléculas de água.',
+                    pergunta: 'Com base na Teoria das Colisões, explique por que nem toda colisão entre as partículas do comprimido efervescente e da água resulta na formação do gás carbônico, citando e explicando pelo menos duas condições necessárias para que uma colisão seja considerada efetiva.',
+                    imagem: 'https://commons.wikimedia.org/wiki/Special:FilePath/Effervescent_tablets_for_oral_rehydration_therapy_(1).JPG?width=700',
+                    credito: 'Imagem: Wikimedia Commons (domínio público)'
+                },
+                // Aula 2 — Energia de ativação
+                {
+                    tema: 'Energia de Ativação · Aula 2',
+                    tipo: 'obj',
+                    contexto: 'O diagrama de energia ao lado ilustra a energia envolvida ao longo de uma transformação química, comparando a reação sem catalisador e a mesma reação na presença de um catalisador.',
+                    pergunta: 'A energia de ativação (Ea) de uma reação química corresponde à(ao):',
+                    imagem: 'https://commons.wikimedia.org/wiki/Special:FilePath/Activation_energy.svg?width=700',
+                    credito: 'Imagem: Wikimedia Commons (uso livre com atribuição)',
+                    alternativas: [
+                        'diferença de energia entre os produtos e os reagentes, também chamada de variação de entalpia (ΔH)',
+                        'energia mínima necessária para que as partículas dos reagentes atinjam o chamado complexo ativado e a reação ocorra',
+                        'energia total liberada por uma reação exotérmica ao final do processo',
+                        'energia armazenada exclusivamente nos produtos formados pela reação'
+                    ],
+                    correta: 1
+                },
+                // Aula 2 — Ação do catalisador sobre a Ea
+                {
+                    tema: 'Ação do Catalisador na Energia de Ativação · Aula 2',
+                    tipo: 'obj',
+                    contexto: 'Enzimas são catalisadores biológicos que aceleram reações metabólicas essenciais à vida. O diagrama ao lado compara os níveis de energia de uma reação catalisada por uma enzima com os da mesma reação sem catalisador.',
+                    pergunta: 'Comparando uma reação catalisada por uma enzima com a mesma reação não catalisada, é correto afirmar que o catalisador:',
+                    imagem: 'https://commons.wikimedia.org/wiki/Special:FilePath/Energiediagramm-Enzymreaktion.svg?width=700',
+                    credito: 'Imagem: Wikimedia Commons (CC BY-SA / GFDL)',
+                    alternativas: [
+                        'aumenta a energia de ativação da reação, tornando-a mais lenta',
+                        'altera a variação de entalpia (ΔH) da reação, tornando-a mais exotérmica',
+                        'diminui a energia de ativação, aumentando a rapidez da reação, sem alterar a variação de entalpia',
+                        'é consumido totalmente durante a reação, sendo transformado em produto final'
+                    ],
+                    correta: 2
+                },
+                // Aula 2 — Dissertativa: diagrama de energia
+                {
+                    tema: 'Diagrama de Energia de uma Transformação Química · Aula 2',
+                    tipo: 'dis',
+                    contexto: 'O gráfico ao lado representa o diagrama de energia de uma reação exotérmica, mostrando os níveis de energia dos reagentes, do complexo ativado e dos produtos ao longo do caminho da reação.',
+                    pergunta: 'Observando o diagrama de energia de uma reação exotérmica, identifique os níveis de energia dos reagentes, do complexo ativado e dos produtos, e explique como a energia de ativação (Ea) está relacionada à rapidez dessa transformação química.',
+                    imagem: 'https://commons.wikimedia.org/wiki/Special:FilePath/Reaktionsenergie-exotherme_Reaktion-Diagramm.svg?width=700',
+                    credito: 'Imagem: Wikimedia Commons (uso livre)'
+                },
+                // Aula 3 — Fator: concentração
+                {
+                    tema: 'Fatores que Afetam a Rapidez: Concentração · Aula 3',
+                    tipo: 'obj',
+                    contexto: 'Um comprimido efervescente de reidratação oral libera gás carbônico de forma perceptivelmente mais rápida quando dissolvido em um pequeno volume de água (solução mais concentrada) do que quando dissolvido em um grande volume de água.',
+                    pergunta: 'Esse comportamento é explicado pelo fato de que, ao aumentar a concentração dos reagentes em uma solução:',
+                    imagem: 'https://commons.wikimedia.org/wiki/Special:FilePath/Effervescent_tablets_for_oral_rehydration_therapy_(2).JPG?width=700',
+                    credito: 'Imagem: Wikimedia Commons (domínio público)',
+                    alternativas: [
+                        'diminui o número de partículas por unidade de volume, reduzindo a frequência de colisões',
+                        'aumenta o número de partículas por unidade de volume, elevando a frequência de colisões efetivas e, portanto, a rapidez da reação',
+                        'a energia de ativação da reação é reduzida a zero, tornando qualquer colisão efetiva',
+                        'o volume total da solução aumenta proporcionalmente, sem alterar a rapidez da reação'
+                    ],
+                    correta: 1
+                },
+                // Aula 3 — Fator: temperatura
+                {
+                    tema: 'Fatores que Afetam a Rapidez: Temperatura · Aula 3',
+                    tipo: 'obj',
+                    contexto: 'Guardar alimentos na geladeira retarda as reações químicas responsáveis pela sua deterioração, como a oxidação de gorduras e a proliferação de microrganismos, prolongando a validade dos alimentos.',
+                    pergunta: 'Do ponto de vista da cinética química, a diminuição da temperatura reduz a rapidez dessas reações de deterioração porque:',
+                    imagem: 'https://commons.wikimedia.org/wiki/Special:FilePath/Open_refrigerator_with_food_at_night.jpg?width=700',
+                    credito: 'Imagem: Wikimedia Commons (CC BY-SA)',
+                    alternativas: [
+                        'diminui a energia cinética média das partículas, reduzindo a frequência e a energia das colisões, o que diminui o número de colisões efetivas',
+                        'aumenta a energia de ativação necessária para qualquer reação, tornando-a impossível em baixas temperaturas',
+                        'impede totalmente o contato entre as partículas dos reagentes presentes no alimento',
+                        'transforma todas as reações químicas envolvidas em processos irreversíveis'
+                    ],
+                    correta: 0
+                },
+                // Aula 3 — Fator: superfície de contato
+                {
+                    tema: 'Fatores que Afetam a Rapidez: Superfície de Contato · Aula 3',
+                    tipo: 'obj',
+                    contexto: 'A lã de aço, formada por finíssimos fios de ferro, reage com o oxigênio do ar (enferruja e pode até queimar com facilidade) de forma muito mais rápida do que um prego maciço de ferro, ainda que ambos sejam constituídos essencialmente pelo mesmo metal.',
+                    pergunta: 'Esse fenômeno está relacionado principalmente ao fato de que a lã de aço apresenta:',
+                    imagem: 'https://commons.wikimedia.org/wiki/Special:FilePath/Steel_wool.png?width=700',
+                    credito: 'Imagem: Wikimedia Commons (CC BY-SA 4.0)',
+                    alternativas: [
+                        'maior superfície de contato, que expõe uma quantidade maior de partículas de ferro ao oxigênio, aumentando a frequência de colisões efetivas',
+                        'menor concentração de ferro presente em sua composição, se comparada à do prego',
+                        'menor energia de ativação, característica exclusiva de objetos de menor massa',
+                        'ausência de colisões entre as partículas de ferro e as de oxigênio do ar'
+                    ],
+                    correta: 0
+                },
+                // Aula 3 — Dissertativa: síntese dos fatores
+                {
+                    tema: 'Fatores que Influenciam a Rapidez das Reações Químicas · Aula 3',
+                    tipo: 'dis',
+                    contexto: 'A panela de pressão é amplamente utilizada para reduzir o tempo de cozimento dos alimentos, pois eleva a pressão e, consequentemente, a temperatura no seu interior, acelerando as reações e transformações físico-químicas envolvidas no cozimento.',
+                    pergunta: 'Considerando os fatores que influenciam a rapidez das transformações químicas (concentração, temperatura, pressão, superfície de contato e catalisador), explique como a panela de pressão altera a rapidez das reações envolvidas no cozimento dos alimentos e cite mais um exemplo do cotidiano em que outro desses fatores é utilizado propositalmente para acelerar ou retardar uma transformação química.',
+                    imagem: 'https://commons.wikimedia.org/wiki/Special:FilePath/LA2-gutbrod-pressure-cooker-1864.png?width=700',
+                    credito: 'Imagem: Wikimedia Commons (domínio público)'
+                }
+            ];
+
+            // ---------- VUE APP ----------
+            new Vue({
+                el: '#app',
+                data: {
+                    turmas: turmas,
+                    turmaSelecionada: null,
+                    alunoSelecionado: null,
+                    numeroAluno: '',
+                    raAluno: '',
+                    emailAluno: '',
+                    dataAtividade: '',
+                    questoes: questoes,
+                    enviando: false,
+                    mostrarErro: false,
+                    mostrarSucesso: false,
+                    mensagemErro: '',
+                    mensagemSucesso: '',
+                    // Depois de publicar o Apps Script (Code.gs) como app da Web, cole aqui a URL /exec
+                    webAppUrl: 'COLE_AQUI_A_URL_DO_APPS_SCRIPT_/exec',
+                    imagemZoom: null,
+                    respostas: questoes.map(q => {
+                        if (q.tipo === 'obj') {
+                            return { tipo: 'obj', escolha: null };
+                        } else {
+                            return { tipo: 'dis', texto: '' };
+                        }
+                    })
+                },
+                computed: {
+                    alunosDaTurma() {
+                        return this.turmaSelecionada ? this.turmaSelecionada.alunos : [];
+                    }
+                },
+                mounted() {
+                    this.dataAtividade = new Date().toLocaleDateString('pt-BR');
+
+                    document.addEventListener('keydown', (e) => {
+                        if (e.key === 'Escape') this.fecharZoom();
+                    });
+
+                    const saved = localStorage.getItem('respostas_quimica_2c_3bim');
+                    if (saved) {
+                        try {
+                            const parsed = JSON.parse(saved);
+                            const turmaSalva = turmas.find(t => t.id === parsed.turmaId) || null;
+                            this.turmaSelecionada = turmaSalva;
+                            if (turmaSalva) {
+                                this.alunoSelecionado = turmaSalva.alunos.find(a => a.num === parsed.alunoNum) || null;
+                                if (this.alunoSelecionado) {
+                                    this.numeroAluno = this.alunoSelecionado.num;
+                                    this.raAluno = this.alunoSelecionado.ra;
+                                    this.emailAluno = this.alunoSelecionado.email;
+                                }
+                            }
+                            if (parsed.respostas) {
+                                parsed.respostas.forEach((r, i) => {
+                                    if (this.respostas[i]) {
+                                        this.respostas[i].escolha = r.escolha;
+                                        this.respostas[i].texto = r.texto;
+                                    }
+                                });
+                            }
+                        } catch (e) {
+                            console.error('Erro ao carregar cache local', e);
+                        }
+                    }
+                },
+                watch: {
+                    respostas: {
+                        deep: true,
+                        handler() {
+                            this.salvarContextoLocal();
+                        }
+                    }
+                },
+                methods: {
+                    onTurmaChange() {
+                        this.alunoSelecionado = null;
+                        this.numeroAluno = '';
+                        this.raAluno = '';
+                        this.emailAluno = '';
+                        this.salvarContextoLocal();
+                    },
+                    abrirZoom(url) {
+                        this.imagemZoom = url;
+                    },
+                    fecharZoom() {
+                        this.imagemZoom = null;
+                    },
+                    salvarContextoLocal() {
+                        const data = {
+                            turmaId: this.turmaSelecionada ? this.turmaSelecionada.id : null,
+                            alunoNum: this.alunoSelecionado ? this.alunoSelecionado.num : null,
+                            respostas: this.respostas
+                        };
+                        localStorage.setItem('respostas_quimica_2c_3bim', JSON.stringify(data));
+                    },
+                    preencherDados() {
+                        if (this.alunoSelecionado) {
+                            this.numeroAluno = this.alunoSelecionado.num;
+                            this.raAluno = this.alunoSelecionado.ra;
+                            this.emailAluno = this.alunoSelecionado.email;
+                        } else {
+                            this.numeroAluno = '';
+                            this.raAluno = '';
+                            this.emailAluno = '';
+                        }
+                        this.salvarContextoLocal();
+                    },
+                    mostrarMensagem(tipo, mensagem, duracao = 5000) {
+                        if (tipo === 'erro') {
+                            this.mensagemErro = mensagem;
+                            this.mostrarErro = true;
+                            setTimeout(() => { this.mostrarErro = false; }, duracao);
+                        } else if (tipo === 'sucesso') {
+                            this.mensagemSucesso = mensagem;
+                            this.mostrarSucesso = true;
+                            setTimeout(() => { this.mostrarSucesso = false; }, duracao);
+                        }
+                    },
+                    enviarRespostas() {
+                        if (!this.turmaSelecionada) {
+                            this.mostrarMensagem('erro', 'Por favor, selecione a turma antes de enviar!');
+                            return;
+                        }
+                        if (!this.alunoSelecionado) {
+                            this.mostrarMensagem('erro', 'Por favor, selecione seu nome antes de enviar!');
+                            return;
+                        }
+                        const naoRespondidas = this.respostas.some(r =>
+                            (r.tipo === 'obj' && r.escolha === null) ||
+                            (r.tipo === 'dis' && !r.texto.trim())
+                        );
+                        if (naoRespondidas) {
+                            this.mostrarMensagem('erro', 'Existem questões não respondidas. Revise a atividade antes de enviar.');
+                            return;
+                        }
+                        if (!this.webAppUrl || this.webAppUrl.includes('COLE_AQUI')) {
+                            this.mostrarMensagem('erro', 'URL do Google Apps Script não configurada. Peça ao professor para ativar o formulário.');
+                            return;
+                        }
+
+                        this.enviando = true;
+
+                        const LETRAS = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+                        const payload = {
+                            timestamp: new Date().toLocaleString('pt-BR'),
+                            data: this.dataAtividade,
+                            turma: this.turmaSelecionada.nome,
+                            numero: this.alunoSelecionado.num,
+                            aluno: this.alunoSelecionado.nome,
+                            ra: this.alunoSelecionado.ra,
+                            email: this.alunoSelecionado.email,
+                            respostas: this.respostas.map((r, idx) => {
+                                if (r.tipo === 'obj') {
+                                    return {
+                                        questao: idx + 1,
+                                        tipo: 'MC',
+                                        letra: r.escolha !== null ? LETRAS[r.escolha] : '',
+                                        resposta: r.escolha !== null ? this.questoes[idx].alternativas[r.escolha] : '(não respondida)'
+                                    };
+                                } else {
+                                    return {
+                                        questao: idx + 1,
+                                        tipo: 'DIS',
+                                        resposta: r.texto || '(em branco)'
+                                    };
+                                }
+                            })
+                        };
+
+                        console.log('📦 Enviando:', JSON.stringify(payload, null, 2));
+
+                        fetch(this.webAppUrl, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'text/plain;charset=utf-8'
+                            },
+                            body: JSON.stringify(payload)
+                        })
+                            .then(response => {
+                                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                                return response.json();
+                            })
+                            .then(data => {
+                                if (data.status === 'success') {
+                                    this.mostrarMensagem('sucesso', `✅ Respostas de ${this.alunoSelecionado.nome} foram registradas com sucesso!`, 6000);
+                                    setTimeout(() => this.excluirRespostasSilencioso(), 2000);
+                                } else {
+                                    this.mostrarMensagem('erro', `⚠️ ${data.message || 'Erro ao processar'}`, 6000);
+                                }
+                            })
+                            .catch(err => {
+                                this.mostrarMensagem('erro', `❌ Erro: ${err.message}. Verifique a URL do Apps Script.`, 7000);
+                            })
+                            .finally(() => {
+                                this.enviando = false;
+                            });
+                    },
+                    excluirRespostas() {
+                        if (confirm('Tem certeza que deseja limpar todas as respostas?')) {
+                            this.excluirRespostasSilencioso();
+                            this.mostrarMensagem('sucesso', '✅ Todas as respostas foram limpas!', 3000);
+                        }
+                    },
+                    excluirRespostasSilencioso() {
+                        this.respostas = this.questoes.map(q => {
+                            if (q.tipo === 'obj') {
+                                return { tipo: 'obj', escolha: null };
+                            } else {
+                                return { tipo: 'dis', texto: '' };
+                            }
+                        });
+                        localStorage.removeItem('respostas_quimica_2c_3bim');
+                    }
+                }
+            });
+        })();
+    </script>
+</body>
+
+</html>
