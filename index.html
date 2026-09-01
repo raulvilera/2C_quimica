@@ -629,9 +629,6 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script>
         (function () {
-            // ---------- DADOS DAS TURMAS E ALUNOS ----------
-            // Para adicionar outra turma, basta duplicar o objeto abaixo com um novo "id",
-            // "nome" e a lista de "alunos" (num, nome, ra, email).
             const turmas = [
                 {
                     id: '2C',
@@ -681,12 +678,7 @@
                 }
             ];
 
-            // ---------- QUESTÕES (Aulas 1, 2 e 3 · 3º Bimestre · Guia do Currículo Priorizado · 2ª Série)
-            // Tema: Cinética Química — AE6: Investigar as condições para a ocorrência das transformações
-            // químicas, analisando de forma qualitativa e quantitativa a rapidez das reações, e os fatores
-            // que a afetam (EM13CNT205) ----------
             const questoes = [
-                // Aula 1 — Condições fundamentais / Teoria das colisões
                 {
                     tema: 'Condições Fundamentais e Teoria das Colisões · Aula 1',
                     tipo: 'obj',
@@ -702,7 +694,6 @@
                     ],
                     correta: 1
                 },
-                // Aula 1 — Rapidez das reações químicas (conceito)
                 {
                     tema: 'Rapidez das Transformações Químicas · Aula 1',
                     tipo: 'obj',
@@ -718,7 +709,6 @@
                     ],
                     correta: 0
                 },
-                // Aula 1 — Dissertativa: colisões efetivas
                 {
                     tema: 'Teoria das Colisões e Condições para a Ocorrência de Reações · Aula 1',
                     tipo: 'dis',
@@ -727,7 +717,6 @@
                     imagem: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgCOsDukW9D4CIY1pzAXvKpWn3MpPefSCZUzfIHMql1A4GpPJQpGSSEu7g_tO2iytaKriCdlGQ1yyIFzzT6aeNXCMPt-cW1zaCoNX2KojylbqdL6xf7aovbrWUp8acPlf5e0vWdOfDxLAg_yDC5e_s88uj7mDD_KB1rC8CpMGWqr6Ap228quT_BXgVmD_0C/s1683/ChatGPT%20Image%2029%20de%20ago.%20de%202026,%2023_05_48.png',
                     credito: 'Imagem: Wikimedia Commons (domínio público)'
                 },
-                // Aula 2 — Energia de ativação
                 {
                     tema: 'Energia de Ativação · Aula 2',
                     tipo: 'obj',
@@ -743,7 +732,6 @@
                     ],
                     correta: 1
                 },
-                // Aula 2 — Ação do catalisador sobre a Ea
                 {
                     tema: 'Ação do Catalisador na Energia de Ativação · Aula 2',
                     tipo: 'obj',
@@ -759,7 +747,6 @@
                     ],
                     correta: 2
                 },
-                // Aula 2 — Dissertativa: diagrama de energia
                 {
                     tema: 'Diagrama de Energia de uma Transformação Química · Aula 2',
                     tipo: 'dis',
@@ -768,7 +755,6 @@
                     imagem: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgpFpCVr5MpYL0B9r4HFp5URYsnbqONBp2jNI3-wtbrGXTR2mrLlLBoDODR7roKVwBm16sg5G-v_awqBAEvt_BDmNytiC_DqTRWno3N4DAjOjvytCwSpmd9mkNhqBtLvrvvLQrzAuEjMjNOulXo4ex0uhu7jzshuCtLXDNPIvlmi6waFcSpCAYx4X-0QD8R/s1536/ChatGPT%20Image%2029%20de%20ago.%20de%202026,%2023_16_04.png',
                     credito: 'Imagem: Wikimedia Commons (uso livre)'
                 },
-                // Aula 3 — Fator: concentração
                 {
                     tema: 'Fatores que Afetam a Rapidez: Concentração · Aula 3',
                     tipo: 'obj',
@@ -784,7 +770,6 @@
                     ],
                     correta: 1
                 },
-                // Aula 3 — Fator: temperatura
                 {
                     tema: 'Fatores que Afetam a Rapidez: Temperatura · Aula 3',
                     tipo: 'obj',
@@ -800,7 +785,6 @@
                     ],
                     correta: 0
                 },
-                // Aula 3 — Fator: superfície de contato
                 {
                     tema: 'Fatores que Afetam a Rapidez: Superfície de Contato · Aula 3',
                     tipo: 'obj',
@@ -816,7 +800,6 @@
                     ],
                     correta: 0
                 },
-                // Aula 3 — Dissertativa: síntese dos fatores
                 {
                     tema: 'Fatores que Influenciam a Rapidez das Reações Químicas · Aula 3',
                     tipo: 'dis',
@@ -827,7 +810,6 @@
                 }
             ];
 
-            // ---------- VUE APP ----------
             new Vue({
                 el: '#app',
                 data: {
@@ -844,7 +826,7 @@
                     mostrarSucesso: false,
                     mensagemErro: '',
                     mensagemSucesso: '',
-                    // Depois de publicar o Apps Script (Code.gs) como app da Web, cole aqui a URL /exec
+                    // Cole aqui a URL /exec do NOVO deploy do Code.gs (roteador central)
                     webAppUrl: 'https://script.google.com/macros/s/AKfycbyIAwBFvDV9HbgQNwqpLbKq-KiLk3AVCvU_xdbBeARmjQSNAp8XawAc1i4sU6qssjL1/exec',
                     imagemZoom: null,
                     respostas: questoes.map(q => {
@@ -974,6 +956,7 @@
                         const LETRAS = ['A', 'B', 'C', 'D', 'E', 'F'];
 
                         const payload = {
+                            atividade: 'quimica_2c',
                             timestamp: new Date().toLocaleString('pt-BR'),
                             data: this.dataAtividade,
                             turma: this.turmaSelecionada.nome,
